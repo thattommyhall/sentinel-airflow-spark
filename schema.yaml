@@ -1,0 +1,1023 @@
+actor_states:
+  columns:
+    code:
+      data_type: text
+      is_nullable: 'NO'
+    head:
+      data_type: text
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    state:
+      data_type: jsonb
+      is_nullable: 'NO'
+  csv_header: height,head,code,state
+  pkeys:
+  - height
+  - head
+  - code
+actors:
+  columns:
+    balance:
+      data_type: text
+      is_nullable: 'NO'
+    code:
+      data_type: text
+      is_nullable: 'NO'
+    head:
+      data_type: text
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    id:
+      data_type: text
+      is_nullable: 'NO'
+    nonce:
+      data_type: bigint
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,id,state_root,code,head,balance,nonce
+  pkeys:
+  - height
+  - id
+  - state_root
+block_headers:
+  columns:
+    cid:
+      data_type: text
+      is_nullable: 'NO'
+    fork_signaling:
+      data_type: bigint
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    miner:
+      data_type: text
+      is_nullable: 'NO'
+    parent_base_fee:
+      data_type: text
+      is_nullable: 'NO'
+    parent_state_root:
+      data_type: text
+      is_nullable: 'NO'
+    parent_weight:
+      data_type: text
+      is_nullable: 'NO'
+    timestamp:
+      data_type: bigint
+      is_nullable: 'NO'
+    win_count:
+      data_type: bigint
+      is_nullable: 'YES'
+  csv_header: height,cid,miner,parent_weight,parent_base_fee,parent_state_root,win_count,timestamp,fork_signaling
+  pkeys:
+  - height
+  - cid
+block_messages:
+  columns:
+    block:
+      data_type: text
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    message:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,block,message
+  pkeys:
+  - height
+  - block
+  - message
+block_parents:
+  columns:
+    block:
+      data_type: text
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    parent:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,block,parent
+  pkeys:
+  - height
+  - block
+  - parent
+chain_economics:
+  columns:
+    burnt_fil:
+      data_type: numeric
+      is_nullable: 'NO'
+    circulating_fil:
+      data_type: numeric
+      is_nullable: 'NO'
+    fil_reserve_disbursed:
+      data_type: numeric
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    locked_fil:
+      data_type: numeric
+      is_nullable: 'NO'
+    mined_fil:
+      data_type: numeric
+      is_nullable: 'NO'
+    parent_state_root:
+      data_type: text
+      is_nullable: 'NO'
+    vested_fil:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: height,parent_state_root,circulating_fil,vested_fil,mined_fil,burnt_fil,locked_fil,fil_reserve_disbursed
+  pkeys:
+  - height
+  - parent_state_root
+chain_powers:
+  columns:
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    miner_count:
+      data_type: bigint
+      is_nullable: 'YES'
+    participating_miner_count:
+      data_type: bigint
+      is_nullable: 'YES'
+    qa_smoothed_position_estimate:
+      data_type: numeric
+      is_nullable: 'NO'
+    qa_smoothed_velocity_estimate:
+      data_type: numeric
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    total_pledge_collateral:
+      data_type: numeric
+      is_nullable: 'NO'
+    total_qa_bytes_committed:
+      data_type: numeric
+      is_nullable: 'NO'
+    total_qa_bytes_power:
+      data_type: numeric
+      is_nullable: 'NO'
+    total_raw_bytes_committed:
+      data_type: numeric
+      is_nullable: 'NO'
+    total_raw_bytes_power:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: height,state_root,total_raw_bytes_power,total_qa_bytes_power,total_raw_bytes_committed,total_qa_bytes_committed,total_pledge_collateral,qa_smoothed_position_estimate,qa_smoothed_velocity_estimate,miner_count,participating_miner_count
+  pkeys:
+  - height
+  - state_root
+chain_rewards:
+  columns:
+    cum_sum_baseline:
+      data_type: numeric
+      is_nullable: 'NO'
+    cum_sum_realized:
+      data_type: numeric
+      is_nullable: 'NO'
+    effective_baseline_power:
+      data_type: numeric
+      is_nullable: 'NO'
+    effective_network_time:
+      data_type: bigint
+      is_nullable: 'YES'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    new_baseline_power:
+      data_type: numeric
+      is_nullable: 'NO'
+    new_reward:
+      data_type: numeric
+      is_nullable: 'YES'
+    new_reward_smoothed_position_estimate:
+      data_type: numeric
+      is_nullable: 'NO'
+    new_reward_smoothed_velocity_estimate:
+      data_type: numeric
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    total_mined_reward:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: height,state_root,cum_sum_baseline,cum_sum_realized,effective_baseline_power,new_baseline_power,new_reward_smoothed_position_estimate,new_reward_smoothed_velocity_estimate,total_mined_reward,new_reward,effective_network_time
+  pkeys:
+  - height
+  - state_root
+derived_gas_outputs:
+  columns:
+    actor_family:
+      data_type: text
+      is_nullable: 'NO'
+    actor_name:
+      data_type: text
+      is_nullable: 'NO'
+    base_fee_burn:
+      data_type: numeric
+      is_nullable: 'NO'
+    cid:
+      data_type: text
+      is_nullable: 'NO'
+    exit_code:
+      data_type: bigint
+      is_nullable: 'NO'
+    from:
+      data_type: text
+      is_nullable: 'NO'
+    gas_burned:
+      data_type: bigint
+      is_nullable: 'NO'
+    gas_fee_cap:
+      data_type: numeric
+      is_nullable: 'NO'
+    gas_limit:
+      data_type: bigint
+      is_nullable: 'YES'
+    gas_premium:
+      data_type: numeric
+      is_nullable: 'NO'
+    gas_refund:
+      data_type: bigint
+      is_nullable: 'NO'
+    gas_used:
+      data_type: bigint
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    method:
+      data_type: bigint
+      is_nullable: 'YES'
+    miner_penalty:
+      data_type: numeric
+      is_nullable: 'NO'
+    miner_tip:
+      data_type: numeric
+      is_nullable: 'NO'
+    nonce:
+      data_type: bigint
+      is_nullable: 'YES'
+    over_estimation_burn:
+      data_type: numeric
+      is_nullable: 'NO'
+    parent_base_fee:
+      data_type: numeric
+      is_nullable: 'NO'
+    refund:
+      data_type: numeric
+      is_nullable: 'NO'
+    size_bytes:
+      data_type: bigint
+      is_nullable: 'YES'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    to:
+      data_type: text
+      is_nullable: 'NO'
+    value:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: height,cid,state_root,"from","to",value,gas_fee_cap,gas_premium,gas_limit,size_bytes,nonce,method,actor_name,actor_family,exit_code,gas_used,parent_base_fee,base_fee_burn,over_estimation_burn,miner_penalty,miner_tip,refund,gas_refund,gas_burned
+  pkeys:
+  - height
+  - cid
+  - state_root
+drand_block_entries:
+  columns:
+    block:
+      data_type: text
+      is_nullable: 'NO'
+    round:
+      data_type: bigint
+      is_nullable: 'NO'
+  csv_header: round,block
+  pkeys: []
+id_addresses:
+  columns:
+    address:
+      data_type: text
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    id:
+      data_type: text
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,id,address,state_root
+  pkeys:
+  - height
+  - id
+  - address
+  - state_root
+internal_messages:
+  columns:
+    actor_family:
+      data_type: text
+      is_nullable: 'NO'
+    actor_name:
+      data_type: text
+      is_nullable: 'NO'
+    cid:
+      data_type: text
+      is_nullable: 'NO'
+    exit_code:
+      data_type: bigint
+      is_nullable: 'NO'
+    from:
+      data_type: text
+      is_nullable: 'NO'
+    gas_used:
+      data_type: bigint
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    method:
+      data_type: bigint
+      is_nullable: 'NO'
+    source_message:
+      data_type: text
+      is_nullable: 'YES'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    to:
+      data_type: text
+      is_nullable: 'NO'
+    value:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: ''
+  pkeys:
+  - height
+  - cid
+internal_parsed_messages:
+  columns:
+    cid:
+      data_type: text
+      is_nullable: 'NO'
+    from:
+      data_type: text
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    method:
+      data_type: text
+      is_nullable: 'NO'
+    params:
+      data_type: jsonb
+      is_nullable: 'YES'
+    to:
+      data_type: text
+      is_nullable: 'NO'
+    value:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: ''
+  pkeys:
+  - height
+  - cid
+market_deal_proposals:
+  columns:
+    client_collateral:
+      data_type: text
+      is_nullable: 'NO'
+    client_id:
+      data_type: text
+      is_nullable: 'NO'
+    deal_id:
+      data_type: bigint
+      is_nullable: 'NO'
+    end_epoch:
+      data_type: bigint
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    is_verified:
+      data_type: boolean
+      is_nullable: 'NO'
+    label:
+      data_type: text
+      is_nullable: 'YES'
+    padded_piece_size:
+      data_type: bigint
+      is_nullable: 'NO'
+    piece_cid:
+      data_type: text
+      is_nullable: 'NO'
+    provider_collateral:
+      data_type: text
+      is_nullable: 'NO'
+    provider_id:
+      data_type: text
+      is_nullable: 'NO'
+    # slashed_epoch:
+    #   data_type: bigint
+    #   is_nullable: 'YES'
+    start_epoch:
+      data_type: bigint
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    storage_price_per_epoch:
+      data_type: text
+      is_nullable: 'NO'
+    unpadded_piece_size:
+      data_type: bigint
+      is_nullable: 'NO'
+  csv_header: height,deal_id,state_root,padded_piece_size,unpadded_piece_size,start_epoch,end_epoch,client_id,provider_id,client_collateral,provider_collateral,storage_price_per_epoch,piece_cid,is_verified,label
+  pkeys:
+  - height
+  - deal_id
+market_deal_states:
+  columns:
+    deal_id:
+      data_type: bigint
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    last_update_epoch:
+      data_type: bigint
+      is_nullable: 'NO'
+    sector_start_epoch:
+      data_type: bigint
+      is_nullable: 'NO'
+    slash_epoch:
+      data_type: bigint
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,deal_id,sector_start_epoch,last_update_epoch,slash_epoch,state_root
+  pkeys:
+  - height
+  - deal_id
+  - state_root
+message_gas_economy:
+  columns:
+    base_fee:
+      data_type: numeric
+      is_nullable: 'NO'
+    base_fee_change_log:
+      data_type: double precision
+      is_nullable: 'NO'
+    gas_capacity_ratio:
+      data_type: double precision
+      is_nullable: 'YES'
+    gas_fill_ratio:
+      data_type: double precision
+      is_nullable: 'YES'
+    gas_limit_total:
+      data_type: numeric
+      is_nullable: 'NO'
+    gas_limit_unique_total:
+      data_type: numeric
+      is_nullable: 'YES'
+    gas_waste_ratio:
+      data_type: double precision
+      is_nullable: 'YES'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,state_root,base_fee,base_fee_change_log,gas_limit_total,gas_limit_unique_total,gas_fill_ratio,gas_capacity_ratio,gas_waste_ratio
+  pkeys:
+  - height
+  - state_root
+messages:
+  columns:
+    cid:
+      data_type: text
+      is_nullable: 'NO'
+    from:
+      data_type: text
+      is_nullable: 'NO'
+    gas_fee_cap:
+      data_type: numeric
+      is_nullable: 'NO'
+    gas_limit:
+      data_type: bigint
+      is_nullable: 'NO'
+    gas_premium:
+      data_type: numeric
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    method:
+      data_type: bigint
+      is_nullable: 'YES'
+    nonce:
+      data_type: bigint
+      is_nullable: 'NO'
+    size_bytes:
+      data_type: bigint
+      is_nullable: 'NO'
+    to:
+      data_type: text
+      is_nullable: 'NO'
+    value:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: height,cid,"from","to",value,gas_fee_cap,gas_premium,gas_limit,size_bytes,nonce,method
+  pkeys:
+  - height
+  - cid
+miner_current_deadline_infos:
+  columns:
+    challenge:
+      data_type: bigint
+      is_nullable: 'NO'
+    close:
+      data_type: bigint
+      is_nullable: 'NO'
+    deadline_index:
+      data_type: bigint
+      is_nullable: 'NO'
+    fault_cutoff:
+      data_type: bigint
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    open:
+      data_type: bigint
+      is_nullable: 'NO'
+    period_start:
+      data_type: bigint
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,miner_id,state_root,deadline_index,period_start,open,close,challenge,fault_cutoff
+  pkeys:
+  - height
+  - miner_id
+  - state_root
+miner_fee_debts:
+  columns:
+    fee_debt:
+      data_type: numeric
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,miner_id,state_root,fee_debt
+  pkeys:
+  - height
+  - miner_id
+  - state_root
+miner_infos:
+  columns:
+    consensus_faulted_elapsed:
+      data_type: bigint
+      is_nullable: 'NO'
+    control_addresses:
+      data_type: jsonb
+      is_nullable: 'YES'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    multi_addresses:
+      data_type: jsonb
+      is_nullable: 'YES'
+    new_worker:
+      data_type: text
+      is_nullable: 'YES'
+    owner_id:
+      data_type: text
+      is_nullable: 'NO'
+    peer_id:
+      data_type: text
+      is_nullable: 'YES'
+    sector_size:
+      data_type: bigint
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    worker_change_epoch:
+      data_type: bigint
+      is_nullable: 'NO'
+    worker_id:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,miner_id,state_root,owner_id,worker_id,new_worker,worker_change_epoch,consensus_faulted_elapsed,peer_id,control_addresses,multi_addresses,sector_size
+  pkeys:
+  - height
+  - miner_id
+  - state_root
+miner_locked_funds:
+  columns:
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    initial_pledge:
+      data_type: numeric
+      is_nullable: 'NO'
+    locked_funds:
+      data_type: numeric
+      is_nullable: 'NO'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    pre_commit_deposits:
+      data_type: numeric
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,miner_id,state_root,locked_funds,initial_pledge,pre_commit_deposits
+  pkeys:
+  - height
+  - miner_id
+  - state_root
+miner_pre_commit_infos:
+  columns:
+    deal_weight:
+      data_type: numeric
+      is_nullable: 'NO'
+    expiration_epoch:
+      data_type: bigint
+      is_nullable: 'YES'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    is_replace_capacity:
+      data_type: boolean
+      is_nullable: 'YES'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    pre_commit_deposit:
+      data_type: numeric
+      is_nullable: 'NO'
+    pre_commit_epoch:
+      data_type: bigint
+      is_nullable: 'YES'
+    replace_sector_deadline:
+      data_type: bigint
+      is_nullable: 'YES'
+    replace_sector_number:
+      data_type: bigint
+      is_nullable: 'YES'
+    replace_sector_partition:
+      data_type: bigint
+      is_nullable: 'YES'
+    seal_rand_epoch:
+      data_type: bigint
+      is_nullable: 'YES'
+    sealed_cid:
+      data_type: text
+      is_nullable: 'NO'
+    sector_id:
+      data_type: bigint
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    verified_deal_weight:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: height,miner_id,sector_id,state_root,sealed_cid,seal_rand_epoch,expiration_epoch,pre_commit_deposit,pre_commit_epoch,deal_weight,verified_deal_weight,is_replace_capacity,replace_sector_deadline,replace_sector_partition,replace_sector_number
+  pkeys:
+  - height
+  - miner_id
+  - sector_id
+  - state_root
+miner_sector_deals:
+  columns:
+    deal_id:
+      data_type: bigint
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    sector_id:
+      data_type: bigint
+      is_nullable: 'NO'
+  csv_header: height,miner_id,sector_id,deal_id
+  pkeys:
+  - height
+  - miner_id
+  - sector_id
+  - deal_id
+miner_sector_events:
+  columns:
+    event:
+      data_type: USER-DEFINED
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    sector_id:
+      data_type: bigint
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,miner_id,sector_id,state_root,event
+  pkeys:
+  - height
+  - sector_id
+  - event
+  - miner_id
+  - state_root
+miner_sector_infos:
+  columns:
+    activation_epoch:
+      data_type: bigint
+      is_nullable: 'YES'
+    deal_weight:
+      data_type: numeric
+      is_nullable: 'NO'
+    expected_day_reward:
+      data_type: numeric
+      is_nullable: 'NO'
+    expected_storage_pledge:
+      data_type: numeric
+      is_nullable: 'NO'
+    expiration_epoch:
+      data_type: bigint
+      is_nullable: 'YES'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    initial_pledge:
+      data_type: numeric
+      is_nullable: 'NO'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    sealed_cid:
+      data_type: text
+      is_nullable: 'NO'
+    sector_id:
+      data_type: bigint
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    verified_deal_weight:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: height,miner_id,sector_id,state_root,sealed_cid,activation_epoch,expiration_epoch,deal_weight,verified_deal_weight,initial_pledge,expected_day_reward,expected_storage_pledge
+  pkeys:
+  - height
+  - miner_id
+  - sector_id
+  - state_root
+miner_sector_posts:
+  columns:
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    post_message_cid:
+      data_type: text
+      is_nullable: 'YES'
+    sector_id:
+      data_type: bigint
+      is_nullable: 'NO'
+  csv_header: height,miner_id,sector_id,post_message_cid
+  pkeys:
+  - height
+  - miner_id
+  - sector_id
+multisig_approvals:
+  columns:
+    approver:
+      data_type: text
+      is_nullable: 'NO'
+    gas_used:
+      data_type: bigint
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    initial_balance:
+      data_type: numeric
+      is_nullable: 'NO'
+    message:
+      data_type: text
+      is_nullable: 'NO'
+    method:
+      data_type: bigint
+      is_nullable: 'NO'
+    multisig_id:
+      data_type: text
+      is_nullable: 'NO'
+    signers:
+      data_type: jsonb
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    threshold:
+      data_type: bigint
+      is_nullable: 'NO'
+    to:
+      data_type: text
+      is_nullable: 'NO'
+    transaction_id:
+      data_type: bigint
+      is_nullable: 'NO'
+    value:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: height,state_root,multisig_id,message,method,approver,threshold,initial_balance,signers,gas_used,transaction_id,"to",value
+  pkeys:
+  - height
+  - state_root
+  - multisig_id
+  - message
+  - approver
+multisig_transactions:
+  columns:
+    approved:
+      data_type: jsonb
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    method:
+      data_type: bigint
+      is_nullable: 'NO'
+    multisig_id:
+      data_type: text
+      is_nullable: 'NO'
+    params:
+      data_type: bytea
+      is_nullable: 'YES'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    to:
+      data_type: text
+      is_nullable: 'NO'
+    transaction_id:
+      data_type: bigint
+      is_nullable: 'NO'
+    value:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: multisig_id,state_root,height,transaction_id,"to",value,method,params,approved
+  pkeys:
+  - height
+  - state_root
+  - multisig_id
+  - transaction_id
+parsed_messages:
+  columns:
+    cid:
+      data_type: text
+      is_nullable: 'NO'
+    from:
+      data_type: text
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    method:
+      data_type: text
+      is_nullable: 'NO'
+    params:
+      data_type: jsonb
+      is_nullable: 'YES'
+    to:
+      data_type: text
+      is_nullable: 'NO'
+    value:
+      data_type: numeric
+      is_nullable: 'NO'
+  csv_header: height,cid,"from","to",value,method,params
+  pkeys:
+  - height
+  - cid
+power_actor_claims:
+  columns:
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    miner_id:
+      data_type: text
+      is_nullable: 'NO'
+    quality_adj_power:
+      data_type: numeric
+      is_nullable: 'NO'
+    raw_byte_power:
+      data_type: numeric
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,miner_id,state_root,raw_byte_power,quality_adj_power
+  pkeys:
+  - height
+  - miner_id
+  - state_root
+receipts:
+  columns:
+    exit_code:
+      data_type: bigint
+      is_nullable: 'NO'
+    gas_used:
+      data_type: bigint
+      is_nullable: 'NO'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    idx:
+      data_type: bigint
+      is_nullable: 'NO'
+    message:
+      data_type: text
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,message,state_root,idx,exit_code,gas_used
+  pkeys:
+  - height
+  - message
+  - state_root
+visor_processing_reports:
+  columns:
+    completed_at:
+      data_type: timestamp with time zone
+      is_nullable: 'NO'
+    errors_detected:
+      data_type: jsonb
+      is_nullable: 'YES'
+    height:
+      data_type: bigint
+      is_nullable: 'NO'
+    reporter:
+      data_type: text
+      is_nullable: 'NO'
+    started_at:
+      data_type: timestamp with time zone
+      is_nullable: 'NO'
+    state_root:
+      data_type: text
+      is_nullable: 'NO'
+    status:
+      data_type: text
+      is_nullable: 'YES'
+    status_information:
+      data_type: text
+      is_nullable: 'YES'
+    task:
+      data_type: text
+      is_nullable: 'NO'
+  csv_header: height,state_root,reporter,task,started_at,completed_at,status,status_information,errors_detected
+  pkeys:
+  - height
+  - state_root
+  - reporter
+  - task
+  - started_at
